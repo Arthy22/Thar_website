@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>car company</title>
+    <style>
+      #gallery-container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+
+      #image-gallery {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .navigation-button {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      #move-left {
+        margin-right: 5px;
+        position: absolute;
+        top: 50%;
+        left: 20px;
+      }
+
+      #move-right {
+        margin-left: 5px;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="background-color: black; height: 50px; z-index: -1"></div>
+    <img
+      src="Screenshot 2024-01-17 180159.png"
+      alt="logo"
+      height="50px"
+      width="50px"
+      style="position: absolute; left: 12px; top: 8px; z-index: 0"
+    />
+    <a
+      href="collections.html"
+      style="
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        left: 85px;
+        top: 23px;
+        z-index: 0;
+      "
+      >Collections</a
+    >
+    <a
+      href="experiences.html"
+      style="
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        left: 185px;
+        top: 23px;
+        z-index: 0;
+      "
+      >Experiences</a
+    >
+    <a
+      href="ass2.html"
+      style="
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        left: 290px;
+        top: 23px;
+        z-index: 0;
+      "
+      >About Us</a
+    >
+    <div id="gallery-container">
+      <div id="image-gallery">
+        <!-- Replace with your image paths -->
+        <img class="gallery-image" src="image1.png" alt="Image 1" />
+        <img class="gallery-image" src="image2.png" alt="Image 2" />
+        <img class="gallery-image" src="image3.png" alt="Image 3" />
+        <img class="gallery-image" src="image4.png" alt="Image 4" />
+        <img class="gallery-image" src="image5.png" alt="Image 5" />
+        <img class="gallery-image" src="image6.png" alt="Image 6" />
+      </div>
+
+      <button
+        id="move-left"
+        class="navigation-button"
+        onclick="moveGallery('left')"
+      >
+        <
+      </button>
+      <button
+        id="move-right"
+        class="navigation-button"
+        onclick="moveGallery('right')"
+      >
+        >
+      </button>
+    </div>
+    <script>
+      const gallery = document.getElementById("image-gallery");
+      let currentIndex = 0;
+
+      function moveGallery(direction) {
+        const galleryWidth =
+          document.getElementById("gallery-container").offsetWidth;
+        const imageWidth = document.querySelector(".gallery-image").width;
+
+        if (direction === "left" && currentIndex > 0) {
+          currentIndex--;
+        } else if (direction === "right" && currentIndex < 9) {
+          currentIndex++;
+        }
+
+        const newPosition = -currentIndex * imageWidth;
+        gallery.style.transform = `translateX(${newPosition}px)`;
+      }
+    </script>
+  </body>
+</html>
